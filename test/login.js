@@ -17,8 +17,8 @@ describe ("Login", function() {
     })
 
     it("Enter JLL Username and Password", async function(){
-        await LoginPage.jllUser.setValue("rahul.poddar@ap.jll.com")
-        await LoginPage.passwordBox.setValue("welcome2JLL!")
+        await LoginPage.jllUser.setValue("")
+        await LoginPage.passwordBox.setValue("")
         await browser.pause(2000);
         await LoginPage.loginInBut.click();
         await browser.pause(2000);
@@ -35,7 +35,7 @@ describe ("Login", function() {
     it ("Add Dashboard", async()=>{
         await Dashboard.addDash.click();
         await browser.pause(3000);
-        await Dashboard.checkBox('Portfolio Summary').click();
+        await Dashboard.checkBox('Lease Events').click();
         await browser.pause(4000);
         await Dashboard.submit.scrollIntoView();
         await Dashboard.submit.click();
@@ -43,7 +43,7 @@ describe ("Login", function() {
     })
 
     it ("Assertion of Dashboard", async()=>{
-        const findDash=await $('//div[contains(text(),"Portfolio Summary")]');
+        const findDash=await $('//div[contains(text(),"Lease Events")]');
         findDash.waitForDisplayed();
         expectChai(await findDash.isDisplayed()).to.equal(true);
     })
@@ -51,7 +51,7 @@ describe ("Login", function() {
     it ("UnFav the Dash", async()=>{
         await Dashboard.addDash.click();
         await browser.pause(3000);
-        await Dashboard.checkBox('Portfolio Summary').click();
+        await Dashboard.checkBox('Lease Events').click();
         await browser.pause(4000);
         await Dashboard.submit.scrollIntoView();
         await Dashboard.submit.click();
